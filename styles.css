@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav {
+    background-color: #007bff; /* Bootstrap primary color */
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Display items in a single line */
+    margin-right: 20px; /* Space between items */
+}
+
+nav ul li a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    padding: 8px 16px; /* Padding around links */
+}
+
+nav ul li a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-radius: 4px; /* Rounded corners */
+}
+
+h1 {
+    text-align: center; /* Center-align the heading */
+    margin-top: 20px; /* Space above heading */
+}
+
+table {
+    width: 80%; /* Set table width */
+    margin: 20px auto; /* Center table */
+    border-collapse: collapse; /* Remove space between table cells */
+}
+
+table, th, td {
+    border: 1px solid #ccc; /* Table borders */
+}
+
+th, td {
+    padding: 10px; /* Padding in table cells */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #f2f2f2; /* Light grey background for table headers */
+}
