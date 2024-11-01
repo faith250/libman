@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'db.php';
-include 'navbar_admin.php';
+include 'navbar_admin.php'; // Include your navbar if needed
 
 // Fetch all books from the database
 $query = $conn->prepare("SELECT * FROM books");
@@ -58,11 +58,33 @@ $result = $query->get_result();
         a:hover {
             text-decoration: underline; /* Underline on hover */
         }
+
+        .alert {
+            color: green; /* Green for success messages */
+            text-align: center;
+        }
+
+        .btn-danger {
+            background-color: red; /* Red for delete button */
+            color: white; /* White text */
+            border: none; /* No border */
+            cursor: pointer; /* Pointer cursor */
+            padding: 5px 10px; /* Padding */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .btn-danger:hover {
+            background-color: darkred; /* Darker red on hover */
+        }
     </style>
 </head>
 <body>
     <h1>Books Available in the Library</h1>
     
+    <?php if (isset($_GET['message'])): ?>
+        <div class="alert"><?php echo htmlspecialchars($_GET['message']); ?></div>
+    <?php endif; ?>
+
     <?php if ($result->num_rows > 0): ?>
         <table>
             <thead>
@@ -95,7 +117,7 @@ $result = $query->get_result();
                             <td>
                                 <form action="delete_book.php" method="post" style="margin: 0;">
                                     <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
-                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this book?');">Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this book?');">Delete</button>
                                 </form>
                             </td>
                         <?php elseif ($_SESSION['role'] === 'student'): ?>

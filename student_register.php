@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'db.php'; // Ensure db.php path is correct
+include 'navbar.php';
 
 $role = 'student'; // Set role explicitly as 'student'
 
@@ -23,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->bind_param("ssssssss", $username, $hashed_password, $role, $first_name, $last_name, $roll, $email, $contact);
 
     if ($query->execute()) {
-        echo "Student registration successful! You can now <a href='student_login.php'>login</a>.";
+        echo "<div class='alert alert-success' role='alert'>Student registration successful! You can now <a href='student_login.php'>login</a>.</div>";
     } else {
-        echo "Error: " . $query->error;
+        echo "<div class='alert alert-danger' role='alert'>Error: " . htmlspecialchars($query->error) . "</div>";
     }
 }
 ?>
@@ -36,32 +37,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Student Registration</h1>
-    <form method="post">
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" id="first_name" required><br>
-        
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" id="last_name" required><br>
-        
-        <label for="roll">Roll No:</label>
-        <input type="text" name="roll" id="roll" required><br>
-        
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required><br>
-        
-        <label for="contact">Phone No:</label>
-        <input type="text" name="contact" id="contact" required><br>
-        
-        <button type="submit">Register</button>
-    </form>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Student Registration</h1>
+        <form method="post" class="border p-4 rounded bg-white shadow">
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="roll">Roll No:</label>
+                <input type="text" name="roll" id="roll" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Phone No:</label>
+                <input type="text" name="contact" id="contact" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

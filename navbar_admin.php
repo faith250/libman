@@ -11,7 +11,7 @@
     <ul>
         <li><a href="admin_dashboard.php">Admin Dashboard</a></li>
         <li><a href="view_book_requests.php">View Book Requests</a></li>
-        <li><a href="manage_users.php">Manage Users</a></li> <!-- Example additional link -->
+        <li><a href="view_students.ph">Manage Users</a></li> <!-- Example additional link -->
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>

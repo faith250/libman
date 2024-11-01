@@ -80,6 +80,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
         <li><a href="issue_book.php">Issue Book to Student</a></li><br>
         <li><a href="return_book.php">Mark Book as Returned</a></li><br>
         <li><a href="view_book_requests.php">Requested Books</a></li><br>
+        <li><a href="announcement.php">Make an Announcement</a></li>
     </ul>
 
     <a href="logout.php" class="logout">Logout</a>
