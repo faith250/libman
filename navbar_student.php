@@ -1,17 +1,8 @@
 <?php
-session_start(); // Start the session to access session variables
-include 'navbar_student.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Navigation Bar</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
-</head>
-<body>
 <nav>
     <ul>
         <li><a href="student_dashboard.php">Student Dashboard</a></li>
@@ -22,5 +13,3 @@ include 'navbar_student.php';
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
-</body>
-</html>
