@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-// Fetch student details for editing
+
 if (isset($_GET['id'])) {
     $student_id = $_GET['id'];
     $stmt = $conn->prepare("SELECT * FROM users WHERE id = ? AND role = 'student'");
@@ -27,10 +27,10 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-// Handle form submission to update student
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
-    $email = $_POST['email']; // Add other fields as necessary
+    $email = $_POST['email']; 
 
     $update_stmt = $conn->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
     $update_stmt->bind_param("ssi", $username, $email, $student_id);
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($student['email']); ?>" required><br>
 
-        <!-- Add other fields as necessary -->
+        
 
         <input type="submit" value="Update Student">
     </form>

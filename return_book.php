@@ -1,20 +1,20 @@
 <?php
 session_start();
-include 'db.php'; // Include your database connection
+include 'db.php'; 
 include 'navbar.php';
 
-// Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $borrowedBookId = $_POST['borrowed_book_id']; // ID of the borrowed book to return
 
-    // Prepare the SQL statement to mark the book as returned
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $borrowedBookId = $_POST['borrowed_book_id']; 
+
+    
     $query = $conn->prepare("DELETE FROM borrowed_books WHERE id = ?");
 
     if (!$query) {
         die("Query preparation failed: " . $conn->error);
     }
 
-    $query->bind_param("i", $borrowedBookId); // Bind the borrowed book ID
+    $query->bind_param("i", $borrowedBookId); 
     if ($query->execute()) {
         echo "Book returned successfully!";
     } else {
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Fetch all borrowed books for the form to select which to return
+
 $booksQuery = $conn->prepare("SELECT br.id, b.title FROM borrowed_books br JOIN books b ON br.book_id = b.id");
 if (!$booksQuery) {
     die("Books query preparation failed: " . $conn->error);

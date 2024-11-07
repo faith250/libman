@@ -21,12 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $book = $bookResult->fetch_assoc();
 
     if ($book && $book['available'] > 0) {
-        // Insert borrow record
+        
         $borrowQuery = $conn->prepare("INSERT INTO borrow (user_id, book_id, borrow_date) VALUES (?, ?, ?)");
         $borrowQuery->bind_param("iis", $user_id, $book_id, $borrow_date);
 
         if ($borrowQuery->execute()) {
-            // Update book availability
+            
             $updateQuery = $conn->prepare("UPDATE books SET available = available - 1 WHERE id = ?");
             $updateQuery->bind_param("i", $book_id);
             $updateQuery->execute();

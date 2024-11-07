@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!-- HTML Form -->
+
 <form method="POST">
     <select name="role">
         <option value="student">Student</option>

@@ -1,15 +1,15 @@
 <?php
 session_start();
-include 'db.php'; // Include your database connection
+include 'db.php'; 
 include 'navbar_admin.php';
 
-// Check if the user is logged in as admin
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: index.php"); // Redirect if not logged in or not an admin
+    header("Location: index.php"); 
     exit();
 }
 
-// Fetch book requests from the database
+
 $query = $conn->prepare("SELECT br.id, u.id AS user_id, u.username, br.title, br.author, br.genre, br.request_date 
                           FROM book_requests br 
                           JOIN users u ON br.user_id = u.id");
@@ -23,7 +23,7 @@ $result = $query->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Book Requests</title>
-    <!-- Bootstrap CSS -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
@@ -38,7 +38,7 @@ $result = $query->get_result();
                     <th>Author</th>
                     <th>Genre</th>
                     <th>Request Date</th>
-                    <th>Actions</th> <!-- Added Actions column -->
+                    <th>Actions</th> 
                 </tr>
             </thead>
             <tbody>

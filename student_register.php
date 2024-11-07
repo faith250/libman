@@ -1,13 +1,13 @@
 <?php
 session_start();
-include 'db.php'; // Ensure db.php path is correct
+include 'db.php'; 
 include 'navbar.php';
 
-$role = 'student'; // Set role explicitly as 'student'
+$role = 'student'; 
 
-// Check if the form is submitted
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve form data
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
     $first_name = $_POST['first_name'];
@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $contact = $_POST['contact'];
     
-    // Hash the password for security
+    
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert new student into the database
+    
     $query = $conn->prepare("INSERT INTO users (username, password, role, first_name, last_name, roll, email, contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $query->bind_param("ssssssss", $username, $hashed_password, $role, $first_name, $last_name, $roll, $email, $contact);
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
-    <!-- Bootstrap CSS -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="bg-light">

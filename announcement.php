@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Handle announcement submission
+    
     require 'db.php';
     require 'send_announcement_email.php';
 

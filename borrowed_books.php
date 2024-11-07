@@ -3,7 +3,7 @@ include 'navbar.php';
 session_start();
 include 'db.php';
 
-// Fetch all borrowed books
+
 $query = $conn->prepare("SELECT b.id, b.title, b.author, br.user_id, br.borrow_date, br.return_date FROM borrowed_books br JOIN books b ON br.book_id = b.id");
 
 if (!$query) {

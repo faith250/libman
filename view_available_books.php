@@ -1,8 +1,8 @@
 <?php
 session_start();
-include 'db.php'; // Include your database connection
+include 'db.php'; 
 
-// Query to fetch available books
+
 $query = $conn->prepare("SELECT id, title, author, genre FROM books WHERE available = 1");
 $query->execute();
 $result = $query->get_result();
@@ -79,7 +79,7 @@ th {
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+    >
     <nav>
         <ul>
             <li><a href="student_dashboard.php">Dashboard</a></li>
@@ -90,7 +90,7 @@ th {
         </ul>
     </nav>
 
-    <!-- Main Content -->
+    
     <h1>Available Books</h1>
     <table>
         <tr>

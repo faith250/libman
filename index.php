@@ -5,76 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management - Choose Role</title>
     <style>
-        body {
+             /* Base styling */
+             body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('https://images.unsplash.com/photo-1531532068976-8e124b74d138'); /* Background image */
-            background-size: cover; /* Cover the entire background */
-            color: #333; /* Text color */
+            background: linear-gradient(135deg, #4b6cb7, #182848); /* Gradient for a polished background */
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
+            overflow: hidden;
         }
+
+        /* Container styling */
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            padding: 50px 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            opacity: 0; /* Start with no visibility */
-            transform: translateY(20px); /* Start slightly lower */
-            animation: fadeIn 0.8s forwards; /* Fade-in animation */
+            transform: scale(0.8);
+            animation: fadeInScale 0.8s ease-out forwards;
+            backdrop-filter: blur(10px); /* Adds a glass effect */
         }
-        @keyframes fadeIn {
+
+        /* Smooth scaling animation for the container */
+        @keyframes fadeInScale {
             to {
-                opacity: 1; /* Fully visible */
-                transform: translateY(0); /* Return to original position */
+                opacity: 1;
+                transform: scale(1);
             }
         }
+
+        /* Header styling */
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2.8em;
+            color: #182848;
+            margin-bottom: 15px;
+            animation: textGlow 1.5s ease-in-out infinite alternate;
         }
+
+        /* Glowing effect on header */
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #4b6cb7, 0 0 30px #182848;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #4b6cb7, 0 0 40px #182848;
+            }
+        }
+
+        /* Quote styling */
         .quote {
             font-style: italic;
-            margin: 10px 0 20px;
-            font-size: 1.2em;
-            color: #555; /* A softer color for the quote */
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 25px;
+            position: relative;
         }
+
+        /* Small decorative underline for the quote */
+        .quote::before, .quote::after {
+            content: '“';
+            font-size: 2em;
+            color: #bbb;
+            position: absolute;
+        }
+        .quote::before {
+            left: -20px;
+            top: -10px;
+        }
+        .quote::after {
+            content: '”';
+            right: -20px;
+            bottom: -10px;
+        }
+
+        /* Box layout for roles */
         .swot-box {
             display: flex;
-            justify-content: space-between;
-            margin: 15px 0; /* Space between boxes */
+            justify-content: space-around;
+            margin: 15px 0;
         }
+
+        /* Role box styling */
         .swot {
-            background-color: #f8f9fa; /* Light gray background for boxes */
-            border: 1px solid #dee2e6; /* Border around boxes */
-            border-radius: 5px;
-            padding: 20px;
-            width: 45%; /* Adjust width as needed */
-            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for scaling and shadow */
+            background-color: #f7f9fc;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 25px 20px;
+            width: 45%;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
         }
         .swot:hover {
-            transform: translateY(-5px); /* Lift the box slightly on hover */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
+        
+        /* Floating pattern background within each role box */
+        .swot::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(circle, #e0e4e7 10%, transparent 11%);
+            background-size: 40px 40px;
+            opacity: 0.15;
+            animation: patternMove 10s linear infinite;
+            z-index: 0;
+        }
+
+        /* Pattern animation */
+        @keyframes patternMove {
+            from {
+                transform: translateX(0) translateY(0);
+            }
+            to {
+                transform: translateX(40px) translateY(40px);
+            }
+        }
+
+        /* Link styling */
         a {
             text-decoration: none;
             font-size: 1.2em;
-            color: #007bff; /* Bootstrap primary color */
-            transition: color 0.3s; /* Smooth color transition */
+            color: #4b6cb7;
+            font-weight: bold;
+            display: block;
+            transition: color 0.3s, transform 0.3s;
+            position: relative;
+            z-index: 1;
         }
         a:hover {
-            color: #0056b3; /* Darker shade on hover */
+            color: #182848;
+            transform: scale(1.1);
         }
+
+        /* Header for each role box */
         .header {
+            font-size: 1.5em;
             font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+            z-index: 1;
         }
-    </style>
+        </style>
 </head>
 <body>
     <div class="container">

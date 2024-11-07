@@ -1,18 +1,18 @@
 <?php
 session_start();
-include 'db.php'; // Include your database connection
+include 'db.php'; 
 include 'navbar.php';
 
-// Check if the user is logged in as a student
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
-    header("Location: student_login.php"); // Redirect to login if not authenticated
+    header("Location: student_login.php"); 
     exit();
 }
 
-// Get user ID from session
+
 $userId = $_SESSION['user_id'];
 
-// Fetch notifications for the logged-in student
+
 $notifyQuery = $conn->prepare("SELECT message, created_at FROM notifications WHERE user_id = ? ORDER BY created_at DESC");
 $notifyQuery->bind_param("i", $userId);
 $notifyQuery->execute();

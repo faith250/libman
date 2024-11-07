@@ -1,9 +1,9 @@
 <?php
 session_start();
 include 'db.php';
-include 'navbar_admin.php'; // Include your navbar if needed
+include 'navbar_admin.php'; 
 
-// Fetch all books from the database
+
 $query = $conn->prepare("SELECT * FROM books");
 $query->execute();
 $result = $query->get_result();

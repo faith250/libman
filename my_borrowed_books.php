@@ -1,16 +1,16 @@
 <?php
 session_start();
-include 'db.php'; // Include your database connection
+include 'db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php"); // Redirect if not logged in
+    header("Location: index.php"); 
     exit();
 }
 
-// Get user ID from session
+
 $userId = $_SESSION['user_id'];
 
-// Query to fetch borrowed books for the logged-in user
+
 $query = $conn->prepare("SELECT br.id, b.title, br.borrow_date, br.return_date 
                           FROM borrowed_books br 
                           JOIN books b ON br.book_id = b.id 
@@ -26,7 +26,7 @@ $result = $query->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Borrowed Books</title>
-    <!-- Bootstrap CSS -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
@@ -57,7 +57,7 @@ $result = $query->get_result();
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

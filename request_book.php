@@ -1,20 +1,20 @@
 <?php
 session_start();
-include 'db.php'; // Include your database connection
+include 'db.php'; 
 include 'navbar.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php"); // Redirect if not logged in
+    header("Location: index.php"); 
     exit();
 }
 
-// Handle book request submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bookTitle = $_POST['title'];
     $bookAuthor = $_POST['author'];
     $bookGenre = $_POST['genre'];
 
-    // Insert book request into the database
+    
     $query = $conn->prepare("INSERT INTO book_requests (user_id, title, author, genre) VALUES (?, ?, ?, ?)");
     $userId = $_SESSION['user_id'];
     $query->bind_param("isss", $userId, $bookTitle, $bookAuthor, $bookGenre);

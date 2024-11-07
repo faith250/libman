@@ -1,16 +1,16 @@
 <?php
 session_start();
-include 'db.php'; // Database connection file
+include 'db.php'; 
 include 'navbar_admin.php';
 
-$role = 'admin'; // Set role explicitly as 'admin'
+$role = 'admin'; 
 
-// Check if the form is submitted
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Query to check user credentials
+    
     $query = $conn->prepare("SELECT * FROM users WHERE username = ? AND role = ?");
     $query->bind_param("ss", $username, $role);
     $query->execute();
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
